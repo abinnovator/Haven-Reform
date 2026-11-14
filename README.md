@@ -23,16 +23,16 @@ You were fighting for the future of humanity.
 
 
 ## How to play
-Use your wasd keys to move around the world. You can see a portal in the oasis. go near it and press E to enter. you'll enter a small cave with a part of it currently cut off (sorry!). There you'll find orbs you can collect that you can bring to the small and dry areas to review them.
+Use your wasd keys to move around the world. You can see a portal in the oasis. go near it and press E to enter. you'll enter a small cave with a part of it currently cut off (sorry!). There you'll find orbs you can collect that you can bring to the small and dry areas to review them. Ifg you tun into the mosters you loose some of the orbs you have gained.
 
 # Tech stack
 Godot and gdscript
 
 # AI Usage
-I will be very clear about my usge usage. As I usually use c# for my godot games I do need a bit of help from ai for some code generation and debugging but this whole thing is nowhere near to completely being done by AI:D
-
+I used ai mainly for debugging stuff(im used to c# for godot not gdscript lol) and for some code gen.
 
 
 # Credits -
 
 https://iclaimthisname.itch.io/cozy-valley - For the tileset.
+
