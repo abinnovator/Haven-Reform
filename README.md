@@ -1,5 +1,5 @@
 ## Haven Bounceback
-
+Itch -> https://abinnovator.itch.io/haven-reform
 
 One day, the surface of H-103 suddenly went dark.
 Nobody knew why. Nobody knew what had happened. And when the light finally returned, humanity was greeted by a sight it could never have imagined.
@@ -22,6 +22,9 @@ You weren't fighting for yourself.
 You were fighting for the future of humanity.
 
 
+## How to play
+Use your wasd keys to move around the world. You can see a portal in the oasis. go near it and press E to enter. you'll enter a small cave with a part of it currently cut off (sorry!). There you'll find orbs you can collect that you can bring to the small and dry areas to review them.
+
 # Tech stack
 Godot and gdscript
 
@@ -33,6 +36,3 @@ I will be very clear about my usge usage. As I usually use c# for my godot games
 # Credits -
 
 https://iclaimthisname.itch.io/cozy-valley - For the tileset.
-
-
-> Im tired asf
