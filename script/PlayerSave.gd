@@ -8,3 +8,5 @@ extends Resource
 @export var areas_restored = []
 #  The number of protals they have beaten duh
 @export var portals_beaten = 0
+# Check if cutscene done
+@export  var cutscene_done = false;

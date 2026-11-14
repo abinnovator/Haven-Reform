@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://x0ai4fmcrbk8"]
+
+[ext_resource type="Script" uid="uid://cdmmvf808tpg2" path="res://script/cutscene.gd" id="1_a320b"]
+[ext_resource type="FontFile" uid="uid://cfafot5mb1a1w" path="res://assets/DarumadropOne-Regular.ttf" id="1_edmg7"]
+
+[node name="Cutscene" type="Node2D" unique_id=1392865963 node_paths=PackedStringArray("textboxes")]
+script = ExtResource("1_a320b")
+textboxes = [NodePath("Label"), NodePath("Label2"), NodePath("Label3"), NodePath("Label5"), NodePath("Label7"), NodePath("Label8"), NodePath("Label9")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=851620145]
+offset_right = 1142.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=767172210]
+offset_left = 121.0
+offset_top = 269.0
+offset_right = 272.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "H 101 was once a peacfull haven
+for humans"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1688995453]
+visible = false
+offset_left = 121.0
+offset_top = 269.0
+offset_right = 272.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "then one day the lights went out"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=74323525]
+visible = false
+offset_left = 121.0
+offset_top = 269.0
+offset_right = 272.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "A minute later when they came back
+the planet was dying"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="." unique_id=1331672012]
+visible = false
+offset_left = 121.0
+offset_top = 269.0
+offset_right = 272.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "In the following year the planet
+died completely"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="." unique_id=1295677458]
+visible = false
+offset_left = 123.0
+offset_top = 261.0
+offset_right = 1006.0
+offset_bottom = 440.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "One small place was left: 
+HAVEN REFORM"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="." unique_id=2031884000]
+visible = false
+offset_left = 118.0
+offset_top = 180.0
+offset_right = 1001.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "Then suddenly a portal opened
+It had a path to a cave with..
+energy crystals?"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="." unique_id=1736023266]
+visible = false
+offset_left = 118.0
+offset_top = 180.0
+offset_right = 1001.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "They put the crystals on the dead
+planet. It started coming back."
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="." unique_id=1859161980]
+visible = false
+offset_left = 50.0
+offset_top = 179.0
+offset_right = 1120.0
+offset_bottom = 449.0
+theme_override_fonts/font = ExtResource("1_edmg7")
+theme_override_font_sizes/font_size = 60
+text = "But everyone had already given up hope..
+Except you. You decided you will make 
+everyone bounce back and have hope"
+horizontal_alignment = 1

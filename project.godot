@@ -11,12 +11,16 @@ config_version=5
 [application]
 
 config/name="HavenBounceback"
+run/main_scene="uid://cd7y6cme3uikq"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Savemanager="*uid://d2v7mksg3v78r"
+SceneManager="*uid://dx4jr3kmvof72"
+GameState="*res://script/game_state.gd"
+RestorationHud="*res://scenes/RestorationEnergy.tscn"
 
 [display]
 

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b4f2aujdtvya7"]
+
+[ext_resource type="FontFile" uid="uid://cfafot5mb1a1w" path="res://assets/DarumadropOne-Regular.ttf" id="1_87jb2"]
+[ext_resource type="Script" uid="uid://chxuhfgu6527q" path="res://script/restoration_energy.gd" id="1_fr5rl"]
+[ext_resource type="Texture2D" uid="uid://dkconxyjrkrsl" path="res://assets/CozyValley_Premium_1.3/Icons/Icons.png" id="2_fr5rl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6b27"]
+atlas = ExtResource("2_fr5rl")
+region = Rect2(0, 0, 18.096436, 16.844482)
+
+[node name="RestorationEnergy" type="CanvasLayer" unique_id=270308126 node_paths=PackedStringArray("label")]
+layer = 100
+script = ExtResource("1_fr5rl")
+label = NodePath("Panel/Label")
+
+[node name="Panel" type="Control" parent="." unique_id=1542098643]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = 63.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=191566866]
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 49.0
+mouse_filter = 2
+color = Color(0.47058824, 0.23921569, 0.16862746, 1)
+
+[node name="Label" type="Label" parent="Panel" unique_id=622753515]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 12.0
+offset_right = 109.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("1_87jb2")
+text = "0 REO"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=821049974]
+texture_filter = 1
+position = Vector2(29, 25)
+scale = Vector2(1.7777778, 2.0625)
+texture = SubResource("AtlasTexture_q6b27")

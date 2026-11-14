@@ -1,3 +1,5 @@
+extends Node
+
 const SaveDir := "user/"
 const SaveName :="Save.json"
 
@@ -10,20 +12,20 @@ func _ready():
 # restoration energy left
 # Portals done
 
-
-func create_save():
-	var savedata: SaveData = SaveData.new()
-	# Ok so first we have to access or create the file
+func create_save() -> SaveData:
+	var savedata := SaveData.new()
 	savedata.restoration_energy = 0
 	savedata.portals_beaten = 0
 	savedata.areas_restored = []
-	savedata.last_position = []
-
+	savedata.last_position = Vector2(80, 380)
 	ResourceSaver.save(savedata, "user://save.tres")
+	return savedata
 
-func load_save():
+func load_save() -> SaveData:
 	if ResourceLoader.exists("user://save.tres"):
-		return ResourceLoader.load("user://save.tres", "",  ResourceLoader.CACHE_MODE_IGNORE) as SaveData
-func update_save(save: SaveData):
-	if ResourceLoader.exists("user://save.tres"):
-		ResourceSaver.save(save, "user://save.tres")
+		return ResourceLoader.load("user://save.tres", "", ResourceLoader.CACHE_MODE_IGNORE) as SaveData
+	return create_save()
+
+
+func update_save(save: SaveData) -> void:
+	ResourceSaver.save(save, "user://save.tres")

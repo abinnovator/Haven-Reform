@@ -1,3 +1,70 @@
 [gd_scene format=3 uid="uid://cd7y6cme3uikq"]
 
-[node name="Startscreen" type="Node2D" unique_id=128193832]
+[ext_resource type="FontFile" uid="uid://cfafot5mb1a1w" path="res://assets/DarumadropOne-Regular.ttf" id="1_o6o42"]
+[ext_resource type="Script" uid="uid://bp3deymu8cvr5" path="res://script/startscreen.gd" id="1_q30ww"]
+[ext_resource type="Texture2D" uid="uid://bqnuorinyjd11" path="res://assets/CozyValley_Premium_1.3/Characters/-- Pre-assembled Characters/char2.png" id="2_q30ww"]
+[ext_resource type="Texture2D" uid="uid://l6squaxbw6qm" path="res://assets/CozyValley_Premium_1.3/Characters/-- Pre-assembled Characters/char3.png" id="3_7nbyq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj7v5"]
+bg_color = Color(0.65882355, 0.63529414, 0.21568628, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6b27"]
+atlas = ExtResource("2_q30ww")
+region = Rect2(-1, 33, 36, 35.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a242"]
+atlas = ExtResource("3_7nbyq")
+region = Rect2(1, 31.5, 31, 33)
+
+[node name="Startscreen" type="Node2D" unique_id=128193832 node_paths=PackedStringArray("StartButton")]
+script = ExtResource("1_q30ww")
+StartButton = NodePath("Button")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1276372239]
+offset_right = 1150.0
+offset_bottom = 645.0
+color = Color(0.47058824, 0.23921569, 0.16862746, 1)
+
+[node name="Button" type="Button" parent="." unique_id=1295535388]
+offset_left = 482.0
+offset_top = 442.0
+offset_right = 576.0
+offset_bottom = 493.0
+theme_override_fonts/font = ExtResource("1_o6o42")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tj7v5")
+text = "Start"
+
+[node name="Label" type="Label" parent="." unique_id=1409483518]
+offset_left = 252.0
+offset_top = 100.0
+offset_right = 892.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("1_o6o42")
+theme_override_font_sizes/font_size = 100
+text = "Haven: reform"
+
+[node name="Label2" type="Label" parent="." unique_id=189359558]
+offset_left = 289.0
+offset_top = 274.0
+offset_right = 834.0
+offset_bottom = 333.0
+theme_override_fonts/font = ExtResource("1_o6o42")
+theme_override_font_sizes/font_size = 40
+text = "Are you ready to bounce back?"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244263262]
+texture_filter = 1
+position = Vector2(166, 379)
+scale = Vector2(5.8055553, 5.757143)
+texture = SubResource("AtlasTexture_q6b27")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=203544588]
+texture_filter = 1
+position = Vector2(962, 399)
+scale = Vector2(5.8055553, 5.757143)
+texture = SubResource("AtlasTexture_4a242")

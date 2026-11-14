@@ -26,9 +26,13 @@ You were fighting for the future of humanity.
 Godot and gdscript
 
 # AI Usage
-I will be very clear about my usge usage. As I usually use c# for my godot games I do need a bit of help from ai but this whole thing is nowhere near to completely being done by AI:D
+I will be very clear about my usge usage. As I usually use c# for my godot games I do need a bit of help from ai for some code generation and debugging but this whole thing is nowhere near to completely being done by AI:D
+
 
 
 # Credits -
 
 https://iclaimthisname.itch.io/cozy-valley - For the tileset.
+
+
+> Im tired asf

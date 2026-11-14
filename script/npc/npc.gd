@@ -35,6 +35,7 @@ const CHARACTER_TEXTURES: Array[String] = [
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogue_label: Label = $DialogueLabel
+@onready var interaction_area: Area2D = $InteractionArea
 
 var _home_position := Vector2.ZERO
 var _target_position := Vector2.ZERO
@@ -47,6 +48,8 @@ var _dialogue_visible := false
 func _ready() -> void:
 	_home_position = global_position
 	_apply_character_preset()
+	interaction_area.body_entered.connect(_on_interaction_area_body_entered)
+	interaction_area.body_exited.connect(_on_interaction_area_body_exited)
 	dialogue_label.text = "%s: %s" % [character_name, dialogue_text]
 	dialogue_label.hide()
 
@@ -55,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	if _player_in_range and Input.is_action_just_pressed("interact"):
 		_dialogue_visible = not _dialogue_visible
 		dialogue_label.visible = _dialogue_visible
+		HavenPlayer.movement_locked = _dialogue_visible
 
 	match movement_state:
 		MovementState.IDLE:
@@ -65,7 +69,11 @@ func _physics_process(delta: float) -> void:
 			_move_patrol(delta)
 
 	_update_animation()
-	move_and_slide()
+	# only move when actually moving: a standing NPC that calls
+	# move_and_slide() every frame gets shoved around by anything that
+	# walks into it, whatever the collision layers say.
+	if velocity != Vector2.ZERO:
+		move_and_slide()
 
 
 func _move_roam(delta: float) -> void:
@@ -141,12 +149,13 @@ func _add_animation(frames: SpriteFrames, animation_name: StringName, cells: Arr
 
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and not (body is HavenNPC):
 		_player_in_range = true
 
 
 func _on_interaction_area_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and not (body is HavenNPC):
 		_player_in_range = false
 		_dialogue_visible = false
 		dialogue_label.hide()
+		HavenPlayer.movement_locked = false
