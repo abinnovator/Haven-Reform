@@ -5,6 +5,8 @@ extends Area2D
 @export_category("Patch")
 @export var patch_id := "patch_small"
 @export var cost := 20
+## How many patches exist in total; the last one triggers the ending.
+@export var patches_total := 3
 
 @export_category("Visuals")
 @export var dead_visual: Node2D
@@ -66,6 +68,8 @@ func _try_restore() -> void:
 	GameState.restore_patch(patch_id)
 	_apply_state(true, true)
 	prompt.hide()
+	if GameState.restored_patches.size() >= patches_total:
+		_show_ending()
 
 
 ## A hidden TileMapLayer still collides, so an invisible "alive" layer
@@ -119,3 +123,41 @@ func _on_body_exited(body: Node2D) -> void:
 	if body is HavenPlayer:
 		_player_near = false
 		prompt.hide()
+
+
+## Full-screen beat once the last patch comes back.
+func _show_ending() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 200
+	get_tree().root.add_child(layer)
+
+	var shade := ColorRect.new()
+	shade.color = Color(0.03, 0.06, 0.04, 0.0)
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	layer.add_child(shade)
+
+	var text := Label.new()
+	text.text = "HAVEN-REFORM IS ALIVE AGAIN"
+	text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	text.set_anchors_preset(Control.PRESET_FULL_RECT)
+	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	text.modulate.a = 0.0
+	text.add_theme_color_override("font_color", Color(0.72, 1.0, 0.72))
+	text.add_theme_color_override("font_outline_color", Color(0.04, 0.08, 0.05))
+	text.add_theme_constant_override("outline_size", 8)
+	text.add_theme_font_size_override("font_size", 44)
+	var font := load("res://assets/DarumadropOne-Regular.ttf")
+	if font != null:
+		text.add_theme_font_override("font", font)
+	layer.add_child(text)
+
+	var tween := create_tween()
+	tween.tween_interval(0.9)
+	tween.tween_property(shade, "color:a", 0.55, 1.0)
+	tween.parallel().tween_property(text, "modulate:a", 1.0, 1.0)
+	tween.tween_interval(3.5)
+	tween.tween_property(text, "modulate:a", 0.0, 1.2)
+	tween.parallel().tween_property(shade, "color:a", 0.0, 1.2)
+	tween.tween_callback(layer.queue_free)

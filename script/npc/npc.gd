@@ -24,6 +24,14 @@ const CHARACTER_TEXTURES: Array[String] = [
 			_apply_character_preset()
 
 @export_multiline var dialogue_text := "Welcome to HAVEN-REFORM."
+## Said once some land has come back. Leave empty to always use the line above.
+@export_multiline var dialogue_progress := ""
+## Said once every patch is restored. Leave empty to fall back to the above.
+@export_multiline var dialogue_restored := ""
+## How many patches count as "all of them".
+@export var patches_total := 3
+## Wander about once HAVEN is fully restored.
+@export var celebrate_when_restored := true
 
 @export_category("Movement")
 @export var movement_state: MovementState = MovementState.IDLE
@@ -50,13 +58,18 @@ func _ready() -> void:
 	_apply_character_preset()
 	interaction_area.body_entered.connect(_on_interaction_area_body_entered)
 	interaction_area.body_exited.connect(_on_interaction_area_body_exited)
-	dialogue_label.text = "%s: %s" % [character_name, dialogue_text]
+	if celebrate_when_restored and _restored_count() >= patches_total:
+		movement_state = MovementState.ROAM
+	dialogue_label.text = "%s: %s" % [character_name, _current_line()]
 	dialogue_label.hide()
+	GameState.substance_changed.connect(_on_world_changed)
 
 
 func _physics_process(delta: float) -> void:
 	if _player_in_range and Input.is_action_just_pressed("interact"):
 		_dialogue_visible = not _dialogue_visible
+		if _dialogue_visible:
+			dialogue_label.text = "%s: %s" % [character_name, _current_line()]
 		dialogue_label.visible = _dialogue_visible
 		HavenPlayer.movement_locked = _dialogue_visible
 
@@ -74,6 +87,27 @@ func _physics_process(delta: float) -> void:
 	# walks into it, whatever the collision layers say.
 	if velocity != Vector2.ZERO:
 		move_and_slide()
+
+
+## Restoring a patch should change the mood straight away.
+func _on_world_changed() -> void:
+	if celebrate_when_restored and _restored_count() >= patches_total:
+		movement_state = MovementState.ROAM
+	dialogue_label.text = "%s: %s" % [character_name, _current_line()]
+
+
+func _restored_count() -> int:
+	return GameState.restored_patches.size()
+
+
+## What this NPC says depends on how much of HAVEN has come back.
+func _current_line() -> String:
+	var done := _restored_count()
+	if done >= patches_total and not dialogue_restored.is_empty():
+		return dialogue_restored
+	if done > 0 and not dialogue_progress.is_empty():
+		return dialogue_progress
+	return dialogue_text
 
 
 func _move_roam(delta: float) -> void:

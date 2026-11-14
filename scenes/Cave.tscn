@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dv8etvwk2a2fw" path="res://script/ore_spawner.gd" id="3_xwfm4"]
 [ext_resource type="PackedScene" path="res://scenes/ore_node.tscn" id="4_i5j2t"]
 [ext_resource type="PackedScene" uid="uid://b2t3k5ty8lvub" path="res://scenes/player.tscn" id="5_sj338"]
+[ext_resource type="PackedScene" path="res://scenes/monster.tscn" id="9_monster"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5lse"]
 texture = ExtResource("1_oq386")
@@ -278,3 +279,19 @@ position = Vector2(183, 221)
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1743502563]
 position = Vector2(187, 214)
+
+[node name="Monster" parent="." instance=ExtResource("9_monster")]
+position = Vector2(680, 168)
+monster_kind = 0
+
+[node name="Monster2" parent="." instance=ExtResource("9_monster")]
+position = Vector2(600, 264)
+monster_kind = 2
+
+[node name="Monster3" parent="." instance=ExtResource("9_monster")]
+position = Vector2(536, 456)
+monster_kind = 1
+
+[node name="Monster4" parent="." instance=ExtResource("9_monster")]
+position = Vector2(504, 232)
+monster_kind = 3
