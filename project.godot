@@ -14,6 +14,10 @@ config/name="HavenBounceback"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Savemanager="*uid://d2v7mksg3v78r"
+
 [display]
 
 window/stretch/mode="canvas_items"

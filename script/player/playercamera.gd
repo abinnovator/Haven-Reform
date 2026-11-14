@@ -11,5 +11,5 @@ func _ready() -> void:
 	limit_top = top
 	limit_right = right
 	limit_bottom = bottom
-	zoom = Vector2(4,4	);
+	zoom = Vector2(4,4);
 	reset_smoothing()
