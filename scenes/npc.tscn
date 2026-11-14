@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bnsxm3up562aa"]
+
+[ext_resource type="Script" uid="uid://r82ad0l4bvlx" path="res://script/npc/npc.gd" id="1_abqhh"]
+[ext_resource type="SpriteFrames" uid="uid://wk1ykbl8suic" path="res://resources/spritesheets/player.tres" id="2_rv78h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6b27"]
+size = Vector2(32, 32)
+
+[node name="NPC" type="CharacterBody2D" unique_id=1326764117]
+script = ExtResource("1_abqhh")
+dialogue_text = "Hi bob!"
+speed = 180.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1191283921]
+texture_filter = 1
+position = Vector2(16, 16)
+sprite_frames = ExtResource("2_rv78h")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1649203775]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_q6b27")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=188650941]
+position = Vector2(16, 0)
+target_position = Vector2(0, 44)
